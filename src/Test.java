@@ -8,10 +8,14 @@ class List {
     private class Node {
         private int value;
         private Node next;
+
+        private Node(int value){
+            this.value = value;
+        }
     }
 
     public boolean addFirst(int value) {
-        Node node = new Node();
+        Node node = new Node(value);
         if (head == null) {
             head = node;
             return true;
@@ -56,7 +60,7 @@ class List {
         }
         for (Node temp = head; temp != null; temp = temp.next) {
             if (temp.next == null) {
-                temp.next = new Node();
+                temp.next = new Node(value);
                 break;
             }
         }
