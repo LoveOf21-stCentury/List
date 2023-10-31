@@ -21,5 +21,13 @@ class List {
         return true;
     }
 
+    public Node search(int value) {
+        if (head == null) return null;
+        for (Node temp = head; temp != null; temp = temp.next){
+            if(temp.value == value) return temp;
+        }
+        return null;
+    }
+
 }
 
