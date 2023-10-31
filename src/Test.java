@@ -29,5 +29,12 @@ class List {
         return null;
     }
 
+    public Integer removeFirst(){
+        if(head == null) return null;
+        int temp = head.value;
+        head = head.next;
+        return temp;
+    }
+
 }
 
