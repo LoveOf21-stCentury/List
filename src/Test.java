@@ -1,15 +1,19 @@
 public class Test {
+    public static void main(String[] args) {
 
+    }
 }
 
 class List {
     private Node head;
+    private Node tail;
 
     private class Node {
         private int value;
         private Node next;
+        private Node previous;
 
-        private Node(int value){
+        private Node(int value) {
             this.value = value;
         }
     }
@@ -20,6 +24,8 @@ class List {
             head = node;
             return true;
         }
+        //create double connected nodes
+        head.previous = node;
         node.next = head;
         head = node;
         return true;
@@ -37,20 +43,16 @@ class List {
         if (head == null) return null;
         int temp = head.value;
         head = head.next;
+        if (head != null) head.previous = null;
         return temp;
     }
 
     public Integer removeLast() {
-        if (head == null) return null;
-        int temporary;
-        for (Node temp = head; temp != null; temp = temp.next) {
-            if (temp.next.next == null) {
-                temporary = temp.next.value;
-                temp.next = null;
-                return temporary;
-            }
-        }
-        return null;
+        if (tail == null) return null;
+        int temporary = tail.value;
+        tail.previous.next = null;
+        tail = tail.previous;
+        return temporary;
     }
 
     public void addLast(int value) {
@@ -58,18 +60,19 @@ class List {
             addFirst(value);
             return;
         }
-        for (Node temp = head; temp != null; temp = temp.next) {
-            if (temp.next == null) {
-                temp.next = new Node(value);
-                break;
-            }
+        if (tail == null) {
+            tail = new Node(value);
+            return;
         }
+        tail.next = new Node(value);
+        tail.next.previous = tail;
+        tail = tail.next;
     }
 
     @Override
     public String toString() {
         String str = "{ ";
-        for (Node temp = head; temp != null; temp = temp.next) {
+        for (Node temp = tail; temp != null; temp = temp.previous) {
             str += String.valueOf(temp.value) + " ";
         }
         return str + "}";
