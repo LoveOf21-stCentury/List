@@ -49,5 +49,18 @@ class List {
         return null;
     }
 
+    public void addLast(int value){
+        if(head == null) {
+            addFirst(value);
+            return;
+        }
+        for (Node temp = head; temp!= null; temp = temp.next){
+            if(temp.next == null){
+                temp.next = new Node();
+                break;
+            }
+        }
+    }
+
 }
 
