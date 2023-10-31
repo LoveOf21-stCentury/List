@@ -23,17 +23,30 @@ class List {
 
     public Node search(int value) {
         if (head == null) return null;
-        for (Node temp = head; temp != null; temp = temp.next){
-            if(temp.value == value) return temp;
+        for (Node temp = head; temp != null; temp = temp.next) {
+            if (temp.value == value) return temp;
         }
         return null;
     }
 
-    public Integer removeFirst(){
-        if(head == null) return null;
+    public Integer removeFirst() {
+        if (head == null) return null;
         int temp = head.value;
         head = head.next;
         return temp;
+    }
+
+    public Integer removeLast() {
+        if (head == null) return null;
+        int temporary;
+        for (Node temp = head; temp != null; temp = temp.next) {
+            if (temp.next.next == null) {
+                temporary = temp.next.value;
+                temp.next = null;
+                return temporary;
+            }
+        }
+        return null;
     }
 
 }
