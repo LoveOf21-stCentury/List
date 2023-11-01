@@ -1,5 +1,7 @@
 public class Test {
+    public static void main(String[] args) {
 
+    }
 }
 
 class List {
@@ -64,6 +66,23 @@ class List {
                 break;
             }
         }
+    }
+
+    public void revert() {
+        if (head != null && head.next != null) {
+            Node temp = head;
+            revert(head.next, head);
+            temp.next = null;
+        }
+    }
+
+    private void revert(Node node, Node previousNode) {
+        if (node.next == null) {
+            head = node;
+        } else {
+            revert(node.next, node);
+        }
+        node.next = previousNode;
     }
 
     @Override
