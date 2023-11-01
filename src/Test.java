@@ -69,11 +69,28 @@ class List {
         tail = tail.next;
     }
 
+//    public void revert() {
+//        Node node = head;
+//        while (node != null) {
+//            Node next = node.next;
+//            Node previous = node.previous;
+//            node.next = previous;
+//            node.previous = next;
+//            if (previous == null) {
+//                tail = node;
+//            }
+//            if (next == null) {
+//                head = node;
+//            }
+//            node = next;
+//        }
+//    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{ ");
-        for (Node temp = head; temp != null; temp = temp.next) {
+        for (Node temp = tail; temp != null; temp = temp.previous) {
             sb.append(temp.value);
             sb.append(" ");
         }
