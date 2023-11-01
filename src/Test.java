@@ -71,11 +71,13 @@ class List {
 
     @Override
     public String toString() {
-        String str = "{ ";
-        for (Node temp = tail; temp != null; temp = temp.previous) {
-            str += String.valueOf(temp.value) + " ";
+        StringBuilder sb = new StringBuilder();
+        sb.append("{ ");
+        for (Node temp = head; temp != null; temp = temp.next) {
+            sb.append(temp.value);
+            sb.append(" ");
         }
-        return str + "}";
+        return sb.toString() + "}";
     }
 
 }
