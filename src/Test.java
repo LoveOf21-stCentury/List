@@ -9,7 +9,7 @@ class List {
         private int value;
         private Node next;
 
-        private Node(int value){
+        private Node(int value) {
             this.value = value;
         }
     }
@@ -68,11 +68,13 @@ class List {
 
     @Override
     public String toString() {
-        String str = "{ ";
+        StringBuilder sb = new StringBuilder();
+        sb.append("{ ");
         for (Node temp = head; temp != null; temp = temp.next) {
-            str += String.valueOf(temp.value) + " ";
+            sb.append(temp.value);
+            sb.append(" ");
         }
-        return str + "}";
+        return sb.toString() + "}";
     }
 
 }
